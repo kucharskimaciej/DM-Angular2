@@ -1,18 +1,17 @@
 /// <reference path="../../typings/angular2/angular2.d.ts"/>
 import {View, Component, bootstrap} from 'angular2/angular2';
 import {ListComponent} from './todo_list';
-import {TodoModel, TodoPriority} from './todo_service';
+import {TodoService, TodoModel, TodoPriority} from './todo_service';
+import {ItemFormComponent} from './todo_form/item_form';
 
 @View({
-    directives: [ListComponent],
+    directives: [ListComponent, ItemFormComponent],
     template: `
         <header>
             <h1>Devmeetings Angular2</h1>
         </header>
-        <section>
-            <list [items]="todos" />
-        </section>
-
+        <list [items]="todos"></list>
+        <item-form></item-form>
     `
 })
 
@@ -20,16 +19,13 @@ import {TodoModel, TodoPriority} from './todo_service';
     selector: 'todo-app'
 })
 export class TodoApp {
-    name:string = "Maciej!";
-    todos:Array<TodoModel> = [
-        new TodoModel("Drink beer", TodoPriority.A),
-        new TodoModel("Learn JS", TodoPriority.A),
-        new TodoModel("Meet people", TodoPriority.C),
-    ];
-
-    constructor() {
-        console.log(this.todos)
+    public todos:Array<TodoModel>;
+    constructor(
+        todoService: TodoService
+    ) {
+        this.todos = todoService.todos;
+        console.log(this.todos);
     }
 }
 
-bootstrap(TodoApp);
+bootstrap(TodoApp, [TodoService]);

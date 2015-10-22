@@ -6,9 +6,11 @@ import {TodoModel, TodoPriority} from './todo_service';
 @View({
     directives: [TodoComponent, NgFor],
     template: `
-        <section>
-            {{ todo.title }}
-        </section>
+        <ul>
+            <li *ng-for="#item of items">
+                <todo [todo]="item"></todo>
+            </li>
+        </ul>
     `
 })
 
@@ -18,8 +20,4 @@ import {TodoModel, TodoPriority} from './todo_service';
 
 export class ListComponent {
     @Input() items: Array<TodoModel>;
-
-    constructor() {
-        console.log(this.items)
-    }
 }

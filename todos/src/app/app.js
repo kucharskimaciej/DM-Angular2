@@ -13,28 +13,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var todo_list_1 = require('./todo_list');
 var todo_service_1 = require('./todo_service');
+var item_form_1 = require('./todo_form/item_form');
 var TodoApp = (function () {
-    function TodoApp() {
-        this.name = "Maciej!";
-        this.todos = [
-            new todo_service_1.TodoModel("Drink beer", todo_service_1.TodoPriority.A),
-            new todo_service_1.TodoModel("Learn JS", todo_service_1.TodoPriority.A),
-            new todo_service_1.TodoModel("Meet people", todo_service_1.TodoPriority.C),
-        ];
+    function TodoApp(todoService) {
+        this.todos = todoService.todos;
         console.log(this.todos);
     }
     TodoApp = __decorate([
         angular2_1.View({
-            directives: [todo_list_1.ListComponent],
-            template: "\n        <header>\n            <h1>Devmeetings Angular2</h1>\n        </header>\n        <section>\n            <list [items]=\"todos\" />\n        </section>\n\n    "
+            directives: [todo_list_1.ListComponent, item_form_1.ItemFormComponent],
+            template: "\n        <header>\n            <h1>Devmeetings Angular2</h1>\n        </header>\n        <list [items]=\"todos\"></list>\n        <item-form></item-form>\n    "
         }),
         angular2_1.Component({
             selector: 'todo-app'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [todo_service_1.TodoService])
     ], TodoApp);
     return TodoApp;
 })();
 exports.TodoApp = TodoApp;
-angular2_1.bootstrap(TodoApp);
+angular2_1.bootstrap(TodoApp, [todo_service_1.TodoService]);
 //# sourceMappingURL=app.js.map
