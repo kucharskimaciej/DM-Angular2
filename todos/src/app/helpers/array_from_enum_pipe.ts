@@ -1,13 +1,14 @@
 import {Pipe} from 'angular2/angular2';
 
 @Pipe({
-    name: 'arrayFromEnum'
+    name: 'arrayFromEnum',
+    pure: false
 })
 export class EnumPipe {
-    transform(value) {
-        return Object.keys(value)
+    transform(data) {
+        return Object.keys(data)
             .map(Number)
             .filter((v) => !isNaN(v))
-            .map((v) => value[v]);
+            .map((v) => data[v]);
     }
 }
