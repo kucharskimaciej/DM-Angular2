@@ -13,7 +13,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var todo_list_1 = require('./todo_list');
 var todo_service_1 = require('./todo_service');
-var item_form_1 = require('./todo_form/item_form');
+var item_form_component_1 = require('./todo_form/item_form_component');
+var ng2 = require('angular2/angular2');
+console.log(ng2);
 var TodoApp = (function () {
     function TodoApp(todoService) {
         this.todos = todoService.todos;
@@ -21,7 +23,7 @@ var TodoApp = (function () {
     }
     TodoApp = __decorate([
         angular2_1.View({
-            directives: [todo_list_1.ListComponent, item_form_1.ItemFormComponent],
+            directives: [todo_list_1.ListComponent, item_form_component_1.ItemFormComponent],
             template: "\n        <header>\n            <h1>Devmeetings Angular2</h1>\n        </header>\n        <list [items]=\"todos\"></list>\n        <item-form></item-form>\n    "
         }),
         angular2_1.Component({
