@@ -1,5 +1,4 @@
 import {View, Component, Input, FORM_DIRECTIVES} from 'angular2/angular2';
-import {Control, Validators} from 'angular2/angular2';
 import {TodoModel, TodoPriority} from './todo_service';
 
 @Component({
@@ -12,8 +11,7 @@ import {TodoModel, TodoPriority} from './todo_service';
         </span>
         <span [hidden]="!editing">
              <input type="text"
-                    [(ng-model)]="todo.title"
-                    [ng-form-control]="title"/>
+                    [(ng-model)]="todo.title"/>
         </span>
 
         <span   class="label"
@@ -24,7 +22,6 @@ import {TodoModel, TodoPriority} from './todo_service';
         <button class="btn-xs pull-right"
                 [class.btn-info]="!editing"
                 [class.btn-success]="editing"
-                [disabled]="!title.valid"
                 (click)="toggle()">
 
             <span [hidden]="editing">edit</span>
@@ -36,7 +33,6 @@ export class TodoComponent {
     @Input() todo:TodoModel;
 
     public editing: boolean = false;
-    public title: Control = new Control('', Validators.required);
 
     toggle() {
 
