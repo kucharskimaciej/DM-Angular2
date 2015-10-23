@@ -11,10 +11,6 @@ import {TodoService, TodoModel, TodoPriority} from './todo_service';
 import {ItemFormComponent} from './todo_form/item_form_component';
 import {SortButtonComponent, ISort} from './sort_button';
 
-import * as ng2 from 'angular2/angular2';
-console.log(ng2);
-
-
 @Component({
     selector: 'todo-app',
     directives: [ListComponent, ItemFormComponent, SortButtonComponent],
