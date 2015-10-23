@@ -13,7 +13,7 @@ export class SortButtonComponent {
     @Input() prop:string;
     @Output() sort: EventEmitter = new EventEmitter();
 
-    public reversed: boolean = true;
+    public reversed: boolean = false;
 
     onClick() {
         this.reversed = !this.reversed;

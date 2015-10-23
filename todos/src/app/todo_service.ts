@@ -30,8 +30,8 @@ export class TodoService {
     constructor() {
         this.todos = [
             new TodoModel("Drink beer", TodoModel.Priority.A, true),
+            new TodoModel("Someday meet people", TodoModel.Priority.C),
             new TodoModel("Learn JS", TodoModel.Priority.A),
-            new TodoModel("Meet people", TodoModel.Priority.C),
         ];
     }
 
