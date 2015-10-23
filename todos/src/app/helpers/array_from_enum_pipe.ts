@@ -2,7 +2,8 @@ import {Pipe} from 'angular2/angular2';
 
 @Pipe({
     name: 'arrayFromEnum',
-    pure: false
+    pure: false /* TODO: read up on pipe purity - should this be inpure? */
+
 })
 export class EnumPipe {
     transform(data) {

@@ -9,6 +9,7 @@ import {
 import {ListComponent} from './todo_list';
 import {TodoService, TodoModel, TodoPriority} from './todo_service';
 import {ItemFormComponent} from './todo_form/item_form_component';
+import {SortButtonComponent, ISort} from './sort_button';
 
 import * as ng2 from 'angular2/angular2';
 console.log(ng2);
@@ -16,14 +17,18 @@ console.log(ng2);
 
 @Component({
     selector: 'todo-app',
-    directives: [ListComponent, ItemFormComponent],
+    directives: [ListComponent, ItemFormComponent, SortButtonComponent],
     template: `
         <header class="row">
             <h1 class="col-sm-12 text-center">Devmeetings Angular2</h1>
         </header>
         <div class="row">
+            <sort [prop]="'title'" (sort)="onSort($event)"></sort>
+            <sort [prop]="'priority'" (sort)="onSort($event)"></sort>
+        </div>
+        <div class="row">
             <div class="col-sm-12">
-                <list [items]="todos"></list>
+                <list [items]="todos" [sorting]="sorting"></list>
             </div>
         </div>
         <div class="row">
@@ -36,10 +41,19 @@ console.log(ng2);
 })
 export class TodoApp {
     public todos:Array<TodoModel>;
+    public sorting: ISort = {
+        prop: 'none',
+        reversed: false
+    };
+
     constructor(
-        todoService: TodoService
+        private todoService: TodoService
     ) {
         this.todos = todoService.todos;
+    }
+
+    onSort(sort: ISort): void {
+        Object.assign(this.sorting, sort);
     }
 }
 
