@@ -6,8 +6,8 @@ import {TodoModel, TodoPriority} from './todo_service';
 @View({
     directives: [TodoComponent, NgFor],
     template: `
-        <ul>
-            <li *ng-for="#item of items">
+        <ul class="list-group">
+            <li *ng-for="#item of items" class="list-group-item">
                 <todo [todo]="item"></todo>
             </li>
         </ul>

@@ -13,19 +13,26 @@ import {ItemFormComponent} from './todo_form/item_form_component';
 import * as ng2 from 'angular2/angular2';
 console.log(ng2);
 
-@View({
-    directives: [ListComponent, ItemFormComponent],
-    template: `
-        <header>
-            <h1>Devmeetings Angular2</h1>
-        </header>
-        <list [items]="todos"></list>
-        <item-form></item-form>
-    `
-})
 
 @Component({
-    selector: 'todo-app'
+    selector: 'todo-app',
+    directives: [ListComponent, ItemFormComponent],
+    template: `
+        <header class="row">
+            <h1 class="col-sm-12 text-center">Devmeetings Angular2</h1>
+        </header>
+        <div class="row">
+            <div class="col-sm-12">
+                <list [items]="todos"></list>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <item-form></item-form>
+            </div>
+        </div>
+
+    `
 })
 export class TodoApp {
     public todos:Array<TodoModel>;
@@ -33,7 +40,6 @@ export class TodoApp {
         todoService: TodoService
     ) {
         this.todos = todoService.todos;
-        console.log(this.todos);
     }
 }
 

@@ -19,15 +19,12 @@ console.log(ng2);
 var TodoApp = (function () {
     function TodoApp(todoService) {
         this.todos = todoService.todos;
-        console.log(this.todos);
     }
     TodoApp = __decorate([
-        angular2_1.View({
-            directives: [todo_list_1.ListComponent, item_form_component_1.ItemFormComponent],
-            template: "\n        <header>\n            <h1>Devmeetings Angular2</h1>\n        </header>\n        <list [items]=\"todos\"></list>\n        <item-form></item-form>\n    "
-        }),
         angular2_1.Component({
-            selector: 'todo-app'
+            selector: 'todo-app',
+            directives: [todo_list_1.ListComponent, item_form_component_1.ItemFormComponent],
+            template: "\n        <header class=\"row\">\n            <h1 class=\"col-sm-12 text-center\">Devmeetings Angular2</h1>\n        </header>\n        <div class=\"row\">\n            <div class=\"col-sm-12\">\n                <list [items]=\"todos\"></list>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-12\">\n                <item-form></item-form>\n            </div>\n        </div>\n\n    "
         }), 
         __metadata('design:paramtypes', [todo_service_1.TodoService])
     ], TodoApp);
