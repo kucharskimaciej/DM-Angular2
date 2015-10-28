@@ -2,6 +2,7 @@
 import {
     View,
     Component,
+    NgFor,
     bootstrap
 } from 'angular2/angular2';
 
@@ -14,7 +15,7 @@ import {SortPipe} from './helpers/sort_pipe';
 
 @Component({
     selector: 'todo-app',
-    directives: [ListComponent, ItemFormComponent, SortButtonComponent],
+    directives: [ListComponent, ItemFormComponent, SortButtonComponent, NgFor],
     pipes: [SortPipe],
     template: `
         <header class="row">
@@ -22,13 +23,13 @@ import {SortPipe} from './helpers/sort_pipe';
         </header>
         <div class="row">
             <div class="col-xs-12">
-                <div class="input-group">
-                    <sort [prop]="'title'" (sort)="onSort($event)"></sort>
-                    <sort [prop]="'priority'" (sort)="onSort($event)"></sort>
+                <div class="input-group l-island">
+                    <sort *ng-for="#prop of sortingProps"
+                        [prop]="prop"
+                        [active]="sorting.prop === prop"
+                        (sort)="onSort($event)"></sort>
                 </div>
-
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -44,8 +45,9 @@ import {SortPipe} from './helpers/sort_pipe';
 })
 export class TodoApp {
     public todos:Array<TodoModel>;
+    public sortingProps:Array<string> = ["title", "priority"];
     public sorting: ISort = {
-        prop: null, /* explicit no sorting upfront */
+        prop: this.sortingProps[0],
         reversed: false
     };
 

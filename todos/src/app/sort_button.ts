@@ -4,16 +4,22 @@ import {View, Component, Input, Output, EventEmitter} from 'angular2/angular2';
     selector: 'sort',
     directives: [],
     template: `
-        <button class="btn btn-lg btn-default" (click)="onClick()">
-            <i class="glyphicon"
+        <button class="btn btn-lg"
+                [class.btn-default]="!active"
+                [class.btn-primary]="active"
+                (click)="onClick()">
+
+            <i  class="glyphicon"
                 [class.glyphicon-chevron-down]="!reversed"
                 [class.glyphicon-chevron-up]="reversed"></i>
             {{ prop }}
+
         </button>
     `
 })
 export class SortButtonComponent {
     @Input() prop:string;
+    @Input() active: boolean;
     @Output() sort: EventEmitter = new EventEmitter();
 
     public reversed: boolean = false;
