@@ -11,7 +11,8 @@ import {TodoModel, TodoPriority} from './todo_service';
         </span>
         <span [hidden]="!editing">
              <input type="text"
-                    [(ng-model)]="todo.title"/>
+                    [(ng-model)]="todo.title"
+                    (keydown.enter)="toggle()"/>
         </span>
 
         <span   class="label"
