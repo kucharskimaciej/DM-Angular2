@@ -4,15 +4,11 @@ export enum TodoPriority {A, B, C}
 
 export class TodoModel {
     static Priority = TodoPriority;
-    public completed: boolean;
 
     constructor(
         public title:string,
         private _priority:TodoPriority = TodoModel.Priority.A,
-        completed?: boolean) {
-
-        this.completed = completed || false;
-    }
+        public completed: boolean = false) {}
 
 
     get priority(): string {
@@ -31,7 +27,7 @@ export class TodoService {
         this.todos = [
             new TodoModel("Drink beer", TodoModel.Priority.A, true),
             new TodoModel("Someday meet people", TodoModel.Priority.C),
-            new TodoModel("Learn JS", TodoModel.Priority.A),
+            new TodoModel("Learn JS"),
         ];
     }
 
