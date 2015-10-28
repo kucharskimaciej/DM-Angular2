@@ -1,4 +1,10 @@
-import {View, Component, Input, Output, EventEmitter} from 'angular2/angular2';
+import {
+    View,
+    Component,
+    Input,
+    Output,
+    EventEmitter
+} from 'angular2/angular2';
 
 @Component({
     selector: 'sort',

@@ -1,16 +1,11 @@
 import {
     View,
     Component,
-    NgFor,
-    bootstrap,
-    bind
+    NgFor
 } from 'angular2/angular2';
 
 import {
-    APP_BASE_HREF,
     ROUTER_DIRECTIVES,
-    ROUTER_BINDINGS,
-    ROUTER_PRIMARY_COMPONENT,
     Router,
     RouteConfig
 } from 'angular2/router';
@@ -18,11 +13,11 @@ import {
 
 
 /* services */
-import {TodoService} from './todo_service';
+import {TodoService} from '../services/todo';
 
 /* components */
 import {HomeComponent} from './home';
-import {ItemFormComponent} from './todo_form/item_form_component';
+import {ItemFormComponent} from './item_form';
 
 @Component({
     selector: 'todo-app',
@@ -52,13 +47,3 @@ export class TodoApp {
         public router: Router
     ) {}
 }
-
-bootstrap(TodoApp, [
-    // services
-    TodoService,
-
-    // router deps
-    ROUTER_BINDINGS,
-    bind(APP_BASE_HREF).toValue('/src'),
-    bind(ROUTER_PRIMARY_COMPONENT).toValue(TodoApp)
-]);

@@ -1,9 +1,17 @@
-import {View, Component, FORM_DIRECTIVES, NgFor, Inject} from 'angular2/angular2';
-import {Validators, FormBuilder, ControlGroup} from 'angular2/angular2';
-import {TodoModel, TodoService} from '../todo_service';
-import {EnumPipe} from '../helpers/array_from_enum_pipe';
+import {
+    View,
+    Component,
+    FORM_DIRECTIVES,
+    NgFor,
+    Inject,
 
+    Validators,
+    FormBuilder,
+    ControlGroup
+} from 'angular2/angular2';
 
+import {TodoModel, TodoService} from '../services/todo';
+import {EnumPipe} from '../pipes/array_from_enum';
 
 @Component({
     selector: 'item-form'
@@ -53,7 +61,6 @@ export class ItemFormComponent {
            priority: [this.defaults.priority /* no validation required */],
         });
     }
-
 
     submit(form): void {
         let {title, priority} = form.value;

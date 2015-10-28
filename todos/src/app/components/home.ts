@@ -6,9 +6,9 @@ import {
 
 
 import {ListComponent} from './todo_list';
-import {TodoService, TodoModel, TodoPriority} from './todo_service';
+import {TodoService, TodoModel, TodoPriority} from '../services/todo';
 import {SortButtonComponent, ISort} from './sort_button';
-import {SortPipe} from './helpers/sort_pipe';
+import {SortPipe} from '../pipes/sort';
 
 @Component({
     selector: 'home',

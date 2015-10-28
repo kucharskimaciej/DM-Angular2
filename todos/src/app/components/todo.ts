@@ -1,5 +1,5 @@
 import {View, Component, Input, FORM_DIRECTIVES} from 'angular2/angular2';
-import {TodoModel, TodoPriority} from './todo_service';
+import {TodoModel, TodoPriority} from '../services/todo';
 
 @Component({
     selector: 'todo',
