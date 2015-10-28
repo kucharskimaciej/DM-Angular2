@@ -5,7 +5,10 @@ import {View, Component, Input, Output, EventEmitter} from 'angular2/angular2';
     directives: [],
     template: `
         <button class="btn btn-lg btn-default" (click)="onClick()">
-            {{ reversed }} {{ prop }}
+            <i class="glyphicon"
+                [class.glyphicon-chevron-down]="!reversed"
+                [class.glyphicon-chevron-up]="reversed"></i>
+            {{ prop }}
         </button>
     `
 })
