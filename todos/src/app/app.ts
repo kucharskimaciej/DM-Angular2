@@ -1,65 +1,64 @@
-/// <reference path="../../typings/angular2/angular2.d.ts"/>
 import {
     View,
     Component,
     NgFor,
-    bootstrap
+    bootstrap,
+    bind
 } from 'angular2/angular2';
 
+import {
+    APP_BASE_HREF,
+    ROUTER_DIRECTIVES,
+    ROUTER_BINDINGS,
+    ROUTER_PRIMARY_COMPONENT,
+    Router,
+    RouteConfig
+} from 'angular2/router';
 
-import {ListComponent} from './todo_list';
-import {TodoService, TodoModel, TodoPriority} from './todo_service';
+
+
+/* services */
+import {TodoService} from './todo_service';
+
+/* components */
+import {HomeComponent} from './home';
 import {ItemFormComponent} from './todo_form/item_form_component';
-import {SortButtonComponent, ISort} from './sort_button';
-import {SortPipe} from './helpers/sort_pipe';
 
 @Component({
     selector: 'todo-app',
-    directives: [ListComponent, ItemFormComponent, SortButtonComponent, NgFor],
-    pipes: [SortPipe],
+    directives: [ROUTER_DIRECTIVES],
     template: `
         <header class="row">
             <h1 class="col-sm-12 text-center">Devmeetings Angular2</h1>
+            <nav class="col-sm-12 text-right">
+                <a class="btn btn-link" [router-link]="['/Home']">Home</a>
+                <a class="btn btn-link" [router-link]="['/AddNew']">Add new</a>
+            </nav>
         </header>
         <div class="row">
-            <div class="col-xs-12">
-                <div class="input-group l-island">
-                    <sort *ng-for="#prop of sortingProps"
-                        [prop]="prop"
-                        [active]="sorting.prop === prop"
-                        (sort)="onSort($event)"></sort>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-sm-12">
-                <list [items]="todos | sort:sorting.prop:sorting.reversed"></list>
+                <router-outlet></router-outlet>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <item-form></item-form>
-            </div>
-        </div>
+
     `
 })
+@RouteConfig([
+    {path: "/", as: "Home", component: HomeComponent},
+    {path: "/new", as: "AddNew", component: ItemFormComponent},
+])
 export class TodoApp {
-    public todos:Array<TodoModel>;
-    public sortingProps:Array<string> = ["title", "priority"];
-    public sorting: ISort = {
-        prop: this.sortingProps[0],
-        reversed: false
-    };
-
     constructor(
-        private todoService: TodoService
-    ) {
-        this.todos = todoService.todos;
-    }
-
-    onSort(sort: ISort): void {
-        Object.assign(this.sorting, sort);
-    }
+        public router: Router
+    ) {}
 }
 
-bootstrap(TodoApp, [TodoService]);
+bootstrap(TodoApp, [
+    // services
+    TodoService,
+
+    // router deps
+    ROUTER_BINDINGS,
+    bind(APP_BASE_HREF).toValue('/src'),
+    bind(ROUTER_PRIMARY_COMPONENT).toValue(TodoApp)
+]);
