@@ -28,9 +28,9 @@ import {ItemFormComponent} from './todo_form/item_form_component';
     selector: 'todo-app',
     directives: [ROUTER_DIRECTIVES],
     template: `
-        <header class="row">
+        <header class="row l-island">
             <h1 class="col-sm-12 text-center">Devmeetings Angular2</h1>
-            <nav class="col-sm-12 text-right">
+            <nav class="col-sm-12 text-center">
                 <a class="btn btn-link" [router-link]="['/Home']">Home</a>
                 <a class="btn btn-link" [router-link]="['/AddNew']">Add new</a>
             </nav>

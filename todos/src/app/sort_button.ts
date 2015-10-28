@@ -4,7 +4,7 @@ import {View, Component, Input, Output, EventEmitter} from 'angular2/angular2';
     selector: 'sort',
     directives: [],
     template: `
-        <button class="btn btn-lg"
+        <button class="btn btn-sm"
                 [class.btn-default]="!active"
                 [class.btn-primary]="active"
                 (click)="onClick()">
