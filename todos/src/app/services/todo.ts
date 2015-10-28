@@ -1,32 +1,18 @@
-import {Injectable} from 'angular2/angular2';
-
-export enum TodoPriority {A, B, C}
-
 export class TodoModel {
-    static Priority = TodoPriority;
-
     constructor(
         public title:string,
-        private _priority:TodoPriority = TodoModel.Priority.A,
-        public completed: boolean = false) {}
-
-
-    get priority(): string {
-        return TodoPriority[this._priority];
-    }
-
-    set priority(val: string) {
-        this._priority = TodoPriority[val];
-    }
-
+        public priority:number = 1,
+        public completed:boolean = false) {}
 }
+
+
 export class TodoService {
     todos:Array<TodoModel>;
 
     constructor() {
         this.todos = [
-            new TodoModel("Drink beer", TodoModel.Priority.A, true),
-            new TodoModel("Someday meet people", TodoModel.Priority.C),
+            new TodoModel("Drink beer", 1, true),
+            new TodoModel("Someday meet people", 2),
             new TodoModel("Learn JS"),
         ];
     }

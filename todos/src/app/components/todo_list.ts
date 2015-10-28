@@ -1,6 +1,6 @@
 import {View, Component, Input, NgFor} from 'angular2/angular2';
 import {TodoComponent} from './todo';
-import {TodoModel, TodoPriority} from '../services/todo';
+import {TodoModel} from '../services/todo';
 
 @View({
     directives: [TodoComponent, NgFor],

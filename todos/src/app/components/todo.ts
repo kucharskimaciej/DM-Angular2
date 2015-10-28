@@ -1,5 +1,5 @@
 import {View, Component, Input, FORM_DIRECTIVES} from 'angular2/angular2';
-import {TodoModel, TodoPriority} from '../services/todo';
+import {TodoModel} from '../services/todo';
 
 @Component({
     selector: 'todo',
@@ -16,9 +16,9 @@ import {TodoModel, TodoPriority} from '../services/todo';
         </span>
 
         <span   class="label"
-                [class.label-danger]=" todo.priority === 'A'"
-                [class.label-warning]="todo.priority === 'B'"
-                [class.label-success]="todo.priority === 'C'">{{ todo.priority }}
+                [class.label-danger]=" todo.priority === 1"
+                [class.label-warning]="todo.priority === 2"
+                [class.label-success]="todo.priority === 3">{{ todo.priority }}
         </span>
         <button class="btn-xs pull-right"
                 [class.btn-info]="!editing"
@@ -36,7 +36,6 @@ export class TodoComponent {
     public editing: boolean = false;
 
     toggle() {
-
         this.editing = !this.editing;
     }
 }

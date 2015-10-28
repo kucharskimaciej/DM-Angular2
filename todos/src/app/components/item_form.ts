@@ -3,7 +3,6 @@ import {
     Component,
     FORM_DIRECTIVES,
     NgFor,
-    Inject,
 
     Validators,
     FormBuilder,
@@ -11,7 +10,6 @@ import {
 } from 'angular2/angular2';
 
 import {TodoModel, TodoService} from '../services/todo';
-import {EnumPipe} from '../pipes/array_from_enum';
 
 @Component({
     selector: 'item-form'
@@ -19,7 +17,6 @@ import {EnumPipe} from '../pipes/array_from_enum';
 
 @View({
     directives: [FORM_DIRECTIVES, NgFor],
-    pipes: [EnumPipe],
     template: `
         <h2 class="text-center">New task</h2>
         <form (submit)="submit(todoForm)" [ng-form-model]="todoForm" class="form-horizontal">
@@ -33,7 +30,7 @@ import {EnumPipe} from '../pipes/array_from_enum';
                 <div class="col-xs-2">
                     <label class="control-label">Priority</label>
                     <select ng-control="priority" class="form-control">
-                        <option *ng-for="#val of priority | arrayFromEnum" [value]="val">{{ val }}</option>
+                        <option *ng-for="#val of priority" [value]="val">{{ val }}</option>
                     </select>
                 </div>
 
@@ -49,23 +46,23 @@ import {EnumPipe} from '../pipes/array_from_enum';
 })
 
 export class ItemFormComponent {
-    public priority = TodoModel.Priority;
     public todoForm: ControlGroup;
+    public priority: Array<number> = [1, 2, 3];
 
     constructor(
         private todoService: TodoService,
-        @Inject(FormBuilder) builder
+        builder: FormBuilder
     ) {
         this.todoForm = builder.group({
-           title: [this.defaults.title, Validators.required],
-           priority: [this.defaults.priority /* no validation required */],
+           title: [this.defaults.title, Validators.required], // TODO: display validation messages
+           priority: [this.defaults.priority /* TODO: custom validation */],
         });
     }
 
     submit(form): void {
         let {title, priority} = form.value;
         if(form.valid) {
-            this.todoService.add( new TodoModel(title, TodoModel.Priority[priority]) );
+            this.todoService.add( new TodoModel(title, priority) );
 
             form.controls.title.updateValue(this.defaults.title);
             form.controls.priority.updateValue(this.defaults.priority);
@@ -75,7 +72,7 @@ export class ItemFormComponent {
     get defaults() {
         return {
             title: "",
-            priority: TodoModel.Priority[TodoModel.Priority.A]
+            priority: 1
         }
     }
 }
