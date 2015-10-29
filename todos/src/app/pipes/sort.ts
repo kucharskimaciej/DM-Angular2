@@ -1,10 +1,10 @@
-import {Pipe} from 'angular2/angular2';
+import {Pipe, PipeTransform} from 'angular2/angular2';
 
 @Pipe({
     name: 'sort',
     pure: false
 })
-export class SortPipe {
+export class SortPipe implements PipeTransform {
     transform(data: Array<any>, [property, reversed]): Array<any> {
         const sorted = data.map(v => v) // clone
             .sort((a, b) => {
