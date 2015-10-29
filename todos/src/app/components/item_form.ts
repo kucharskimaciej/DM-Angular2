@@ -12,28 +12,25 @@ import {
 import {TodoModel, TodoService} from '../services/todo';
 
 @Component({
-    selector: 'item-form'
-})
-
-@View({
+    selector: 'item-form',
     directives: [FORM_DIRECTIVES, NgFor],
     template: `
         <h2 class="text-center">New task</h2>
         <form (submit)="submit(todoForm)" [ng-form-model]="todoForm" class="form-horizontal">
 
             <div class="form-group">
-                <div class="col-xs-10">
+                <div class="col-xs-10" [class.has-error]="!todoForm.controls.title.valid && todoForm.controls.title.touched">
                     <label class="control-label">Title</label>
                     <input type="text" ng-control="title" class="form-control"/>
 
                 </div>
+
                 <div class="col-xs-2">
                     <label class="control-label">Priority</label>
                     <select ng-control="priority" class="form-control">
                         <option *ng-for="#val of priority" [value]="val">{{ val }}</option>
                     </select>
                 </div>
-
             </div>
             <div class="form-group">
                 <div class="col-xs-12 text-center">
@@ -44,7 +41,6 @@ import {TodoModel, TodoService} from '../services/todo';
         </form>
     `
 })
-
 export class ItemFormComponent {
     public todoForm: ControlGroup;
     public priority: Array<number> = [1, 2, 3];
@@ -54,8 +50,8 @@ export class ItemFormComponent {
         builder: FormBuilder
     ) {
         this.todoForm = builder.group({
-           title: [this.defaults.title, Validators.required], // TODO: display validation messages
-           priority: [this.defaults.priority /* TODO: custom validation */],
+           title: [this.defaults.title, Validators.required],
+           priority: [this.defaults.priority /* no validation needed */],
         });
     }
 
@@ -66,6 +62,11 @@ export class ItemFormComponent {
 
             form.controls.title.updateValue(this.defaults.title);
             form.controls.priority.updateValue(this.defaults.priority);
+
+            /* quite dirty...
+            form.controls.title._pristine = true;
+            form.controls.title._touched = false;
+            */
         }
     }
 
