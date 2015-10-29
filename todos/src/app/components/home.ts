@@ -18,7 +18,7 @@ import {FilterPipe} from '../pipes/filter';
     template: `
         <div class="row">
             <div class="col-xs-12 l-island">
-                <input type="text" class="form-control" [(ng-model)]="filtering" />
+                <input type="text" class="form-control" [(ng-model)]="filtering" placeholder="Search..." />
             </div>
         </div>
         <div class="row">
