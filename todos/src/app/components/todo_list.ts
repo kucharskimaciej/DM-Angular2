@@ -1,8 +1,9 @@
-import {View, Component, Input, NgFor} from 'angular2/angular2';
+import {Component, Input, NgFor} from 'angular2/angular2';
 import {TodoComponent} from './todo';
 import {TodoModel} from '../services/todo';
 
-@View({
+@Component({
+    selector: 'list',
     directives: [TodoComponent, NgFor],
     template: `
         <ul class="list-group">
@@ -13,11 +14,6 @@ import {TodoModel} from '../services/todo';
         </ul>
     `
 })
-
-@Component({
-    selector: 'list'
-})
-
 export class ListComponent {
     @Input() items: Array<TodoModel>;
 }

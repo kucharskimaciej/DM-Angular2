@@ -1,4 +1,4 @@
-import {View, Component, Input, FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component, Input, FORM_DIRECTIVES} from 'angular2/angular2';
 import {TodoModel} from '../services/todo';
 
 @Component({

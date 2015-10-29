@@ -1,5 +1,4 @@
 import {
-    View,
     Component,
     Input,
     Output,

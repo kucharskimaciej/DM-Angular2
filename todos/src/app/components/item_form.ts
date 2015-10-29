@@ -1,5 +1,4 @@
 import {
-    View,
     Component,
     FORM_DIRECTIVES,
     CORE_DIRECTIVES,

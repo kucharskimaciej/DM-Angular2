@@ -1,5 +1,4 @@
 import {
-    View,
     Component,
     NgFor
 } from 'angular2/angular2';
