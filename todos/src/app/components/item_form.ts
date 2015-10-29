@@ -2,6 +2,7 @@ import {
     View,
     Component,
     FORM_DIRECTIVES,
+    CORE_DIRECTIVES,
     NgFor,
 
     Validators,
@@ -13,16 +14,22 @@ import {TodoModel, TodoService} from '../services/todo';
 
 @Component({
     selector: 'item-form',
-    directives: [FORM_DIRECTIVES, NgFor],
+    directives: [FORM_DIRECTIVES, NgFor, CORE_DIRECTIVES],
     template: `
         <h2 class="text-center">New task</h2>
         <form (submit)="submit(todoForm)" [ng-form-model]="todoForm" class="form-horizontal">
 
             <div class="form-group">
-                <div class="col-xs-10" [class.has-error]="!todoForm.controls.title.valid && todoForm.controls.title.touched">
+                <div class="col-xs-10"
+                    [class.has-error]="!todoForm.controls.title.valid && todoForm.controls.title.touched">
+
                     <label class="control-label">Title</label>
                     <input type="text" ng-control="title" class="form-control"/>
-
+                    <span *ng-if="todoForm.controls.title.touched && !todoForm.controls.title.valid">
+                        <span class="help-block" *ng-if="todoForm.controls.title.errors.required">
+                            Title is required
+                        </span>
+                    </span>
                 </div>
 
                 <div class="col-xs-2">
@@ -32,6 +39,7 @@ import {TodoModel, TodoService} from '../services/todo';
                     </select>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="col-xs-12 text-center">
                     <button type="submit" class="btn btn-success btn-lg">Yet more stuff...</button>
