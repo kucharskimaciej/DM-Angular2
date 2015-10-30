@@ -20,6 +20,10 @@
     border-color: rgba(0, 0, 0, 0)
 }
 
-.thumbnail {
-    min-height: 600px;
+.items .col-xs-3:nth-of-type(4n+1) {
+    clear: left;
+}
+
+.items .col-xs-4:nth-of-type(3n+1) {
+    clear: left;
 }

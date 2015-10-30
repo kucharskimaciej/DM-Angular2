@@ -11,7 +11,7 @@ import {Item} from '../../../services/data';
                 <p class="info">
                     <strong>{{ item.artist }}</strong> -- {{ item.title }}
                 </p>
-                <p class="details">
+                <p class="details" [hidden]="!expanded">
                     <strong>Album name: </strong> {{ item.album.title }}<br/>
                     <strong>Album price:</strong> USD {{ item.album.price }}
                 </p>
@@ -20,8 +20,8 @@ import {Item} from '../../../services/data';
                         Buy
                     </button>
                     <button class="btn btn-sm btn-default" (click)="expanded = !expanded">
-                        <span [hidden]="!expanded">more</span>
-                        <span [hidden]="expanded">fewer</span> details
+                        <span [hidden]="expanded">more</span>
+                        <span [hidden]="!expanded">fewer</span> details
                     </button>
                 </p>
             </footer>
@@ -33,6 +33,4 @@ export class ItemComponent {
 
     public editing:boolean = false;
     public expanded:boolean = false;
-
-
 }

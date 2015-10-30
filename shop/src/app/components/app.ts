@@ -27,6 +27,7 @@ import {CustomerFormComponent} from './customer/form';
             <h1 class="col-sm-12 text-center">AjMusik shop</h1>
             <nav class="col-sm-12 text-center">
                 <a class="btn btn-link" [router-link]="['/Index']">Home</a>
+                <a class="btn btn-link" [router-link]="['/AddCustomer']">New order</a>
             </nav>
         </header>
         <div class="row">
@@ -39,6 +40,8 @@ import {CustomerFormComponent} from './customer/form';
 })
 @RouteConfig([
     {path: "/", as: "Index", component: ItemsIndexComponent},
+    {path: "/items/:id", as: "Details", component: ItemsDetailsComponent},
+    {path: "/customers/new", as: "AddCustomer", component: CustomerFormComponent}
 ])
 export class RootComponent {
     constructor(

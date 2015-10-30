@@ -35,7 +35,7 @@ import {ItemComponent} from './partials/item';
                     (sort)="onSort($event)"></sort>
             </div>
         </div>
-        <div class="row">
+        <div class="row items">
             <div class="col-xs-4" *ng-for="#item of (items | filter:filtering) | sort:sorting.prop:sorting.reversed">
                 <item [item]="item"></item>
             </div>
