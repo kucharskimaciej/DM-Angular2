@@ -6,7 +6,7 @@ import {Item} from '../../../services/data';
     directives: [FORM_DIRECTIVES],
     template: `
         <article class="thumbnail">
-            <img [src]="item.pictureUrl" />
+            <img [src]="item.pictureUrl" [alt]="item.artist + ' -- ' + item.title"/>
             <footer class="caption">
                 <p class="info">
                     <strong>{{ item.artist }}</strong> -- {{ item.title }}
