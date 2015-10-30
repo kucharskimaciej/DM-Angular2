@@ -5,9 +5,15 @@ import {Item} from '../../../services/data';
     selector: 'item',
     directives: [FORM_DIRECTIVES],
     template: `
-        <article class="thumbnail">
+        <article class="item thumbnail">
             <img [src]="item.pictureUrl" [alt]="item.artist + ' -- ' + item.title"/>
-            <footer class="caption">
+            <section class="editing" [hidden]="!editing">
+                <input type="text" [(ng-model)]="item.pictureUrl" class="form-control"/>
+                <input type="text" [(ng-model)]="item.artist" class="form-control"/>
+                <input type="text" [(ng-model)]="item.title" class="form-control"/>
+                <input type="number" [(ng-model)]="item.price" class="form-control"/>
+            </section>
+            <footer class="caption" [hidden]="editing">
                 <p class="info">
                     <strong>{{ item.artist }}</strong> -- {{ item.title }}<br/>
                     USD <strong>{{ item.price }}</strong>
@@ -26,6 +32,14 @@ import {Item} from '../../../services/data';
                     </button>
                 </p>
             </footer>
+            <aside class="edit">
+                <button class="btn btn-sm"
+                    [class.btn-default]="!editing"
+                    [class.btn-primary]="editing"
+                    (click)="editing = !editing">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </button>
+            </aside>
         </article>
     `
 })
