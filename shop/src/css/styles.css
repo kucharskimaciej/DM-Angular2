@@ -1,0 +1,21 @@
+.l-island {
+    margin-bottom: 20px;
+}
+
+.router-link-active {
+    color: #ffffff;
+    background-color: #2196f3;
+    border-color: transparent
+}
+
+.router-link-active:focus, .router-link-active.focus {
+    color: #ffffff;
+    background-color: #0c7cd5;
+    border-color: rgba(0, 0, 0, 0)
+}
+
+.router-link-active:hover {
+    color: #ffffff;
+    background-color: #0c7cd5;
+    border-color: rgba(0, 0, 0, 0)
+}
