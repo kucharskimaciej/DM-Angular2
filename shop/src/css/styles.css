@@ -37,5 +37,13 @@
 }
 
 .item .editing {
-    padding: 10px 10px 0;
+    padding: 15px 10px 0;
+}
+
+.item .editing input {
+    margin-bottom: 10px;
+}
+
+.btn {
+    text-transform: uppercase;
 }

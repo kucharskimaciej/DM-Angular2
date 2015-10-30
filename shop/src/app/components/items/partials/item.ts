@@ -26,7 +26,10 @@ import {Item} from '../../../services/data';
                     <button class="btn btn-sm btn-success">
                         Buy
                     </button>
-                    <button class="btn btn-sm btn-default" (click)="expanded = !expanded">
+                    <button class="btn btn-sm"
+                        [class.btn-link]="!expanded"
+                        [class.btn-default]="expanded"
+                        (click)="expanded = !expanded">
                         <span [hidden]="expanded">more</span>
                         <span [hidden]="!expanded">fewer</span> details
                     </button>
