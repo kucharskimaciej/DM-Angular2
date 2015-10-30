@@ -19,3 +19,7 @@
     background-color: #0c7cd5;
     border-color: rgba(0, 0, 0, 0)
 }
+
+.thumbnail {
+    min-height: 600px;
+}

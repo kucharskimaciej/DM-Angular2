@@ -12,21 +12,21 @@ import {
 
 
 /* services */
-import {TodoService} from '../services/todo';
+import {DataService} from '../services/data';
 
 /* components */
-import {HomeComponent} from './home';
-import {ItemFormComponent} from './item_form';
+import {ItemsIndexComponent} from './items/index';
+import {ItemsDetailsComponent} from './items/details';
+import {CustomerFormComponent} from './customer/form';
 
 @Component({
-    selector: 'todo-app',
+    selector: 'app',
     directives: [ROUTER_DIRECTIVES],
     template: `
         <header class="row l-island">
-            <h1 class="col-sm-12 text-center">Devmeetings Angular2</h1>
+            <h1 class="col-sm-12 text-center">AjMusik shop</h1>
             <nav class="col-sm-12 text-center">
-                <a class="btn btn-link" [router-link]="['/Home']">Home</a>
-                <a class="btn btn-link" [router-link]="['/AddNew']">Add new</a>
+                <a class="btn btn-link" [router-link]="['/Index']">Home</a>
             </nav>
         </header>
         <div class="row">
@@ -38,10 +38,9 @@ import {ItemFormComponent} from './item_form';
     `
 })
 @RouteConfig([
-    {path: "/", as: "Home", component: HomeComponent},
-    {path: "/new", as: "AddNew", component: ItemFormComponent},
+    {path: "/", as: "Index", component: ItemsIndexComponent},
 ])
-export class TodoApp {
+export class RootComponent {
     constructor(
         public router: Router
     ) {}
