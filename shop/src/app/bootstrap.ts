@@ -1,4 +1,4 @@
-import {bootstrap, bind} from 'angular2/angular2';
+import {bootstrap, provide} from 'angular2/angular2';
 import {
     ROUTER_PROVIDERS,
     APP_BASE_HREF,
@@ -9,7 +9,7 @@ import {
 } from 'angular2/router';
 
 import {
-    HTTP_BINDINGS
+    HTTP_PROVIDERS
 } from 'angular2/http';
 
 /* services */
@@ -21,12 +21,11 @@ import {RootComponent} from './components/app';
 
 const ROUTER_CONFIG = [
     ROUTER_PROVIDERS,
-    bind(APP_BASE_HREF).toValue('/'),
-    bind(ROUTER_PRIMARY_COMPONENT).toValue(RootComponent),
-    bind(LocationStrategy).toClass(HashLocationStrategy)
+    provide(APP_BASE_HREF, {useValue: '/'}),
+    provide(LocationStrategy, {useClass: HashLocationStrategy})
 ];
 const HTTP_CONFIG = [
-    HTTP_BINDINGS
+    HTTP_PROVIDERS
 ];
 
 bootstrap(RootComponent, [
