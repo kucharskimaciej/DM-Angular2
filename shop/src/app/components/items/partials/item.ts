@@ -9,7 +9,8 @@ import {Item} from '../../../services/data';
             <img [src]="item.pictureUrl" [alt]="item.artist + ' -- ' + item.title"/>
             <footer class="caption">
                 <p class="info">
-                    <strong>{{ item.artist }}</strong> -- {{ item.title }}
+                    <strong>{{ item.artist }}</strong> -- {{ item.title }}<br/>
+                    USD <strong>{{ item.price }}</strong>
                 </p>
                 <p class="details" [hidden]="!expanded">
                     <strong>Album name: </strong> {{ item.album.title }}<br/>
