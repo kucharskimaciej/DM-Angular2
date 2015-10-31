@@ -52,7 +52,9 @@ export class ItemsIndexComponent {
 
     public filtering:string = "";
 
-    constructor(private todoService:DataService) {
+    constructor(
+        private todoService:DataService
+    ) {
         this.items = todoService.items;
     }
 

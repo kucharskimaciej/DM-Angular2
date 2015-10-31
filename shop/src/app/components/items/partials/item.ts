@@ -1,5 +1,6 @@
-import {Component, Input, FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component, Input, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 import {Item} from '../../../services/data';
+import {Cart} from '../../../services/cart';
 
 @Component({
     selector: 'item',
@@ -23,8 +24,15 @@ import {Item} from '../../../services/data';
                     <strong>Album price:</strong> USD {{ item.album.price }}
                 </p>
                 <p>
-                    <button class="btn btn-sm btn-success">
-                        Buy
+                    <button class="btn btn-sm btn-danger"
+                            (click)="toggleCart()"
+                            [hidden]="!cart.has(item)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                    <button class="btn btn-sm btn-success"
+                            (click)="toggleCart()"
+                            [hidden]="cart.has(item)">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
                     </button>
                     <button class="btn btn-sm"
                         [class.btn-link]="!expanded"
@@ -49,6 +57,16 @@ import {Item} from '../../../services/data';
 export class ItemComponent {
     @Input() item:Item;
 
+    constructor(public cart: Cart) {}
+
     public editing:boolean = false;
     public expanded:boolean = false;
+
+    toggleCart() {
+        if(this.cart.has(this.item)) {
+            this.cart.remove(this.item);
+        } else {
+            this.cart.add(this.item);
+        }
+    }
 }

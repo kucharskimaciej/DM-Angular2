@@ -14,6 +14,7 @@ import {
 
 /* services */
 import {DataService} from './services/data';
+import {Cart} from './services/cart';
 
 /* root component */
 import {RootComponent} from './components/app';
@@ -31,6 +32,7 @@ const HTTP_CONFIG = [
 bootstrap(RootComponent, [
     // services
     DataService,
+    Cart,
     ROUTER_CONFIG,
     HTTP_CONFIG
 ]);

@@ -18,10 +18,11 @@ import {DataService} from '../services/data';
 import {ItemsIndexComponent} from './items/index';
 import {ItemsDetailsComponent} from './items/details';
 import {CustomerFormComponent} from './customer/form';
+import {CartComponent} from './cart/cart';
 
 @Component({
     selector: 'app',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, CartComponent],
     template: `
         <header class="row l-island">
             <h1 class="col-sm-12 text-center">AjMusik shop</h1>
@@ -31,9 +32,10 @@ import {CustomerFormComponent} from './customer/form';
             </nav>
         </header>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-9">
                 <router-outlet></router-outlet>
             </div>
+            <cart class="col-sm-3"></cart>
         </div>
 
     `
