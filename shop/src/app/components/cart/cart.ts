@@ -19,10 +19,12 @@ import {CartItemComponent} from './cart-item';
 
 export class CartComponent {
     public items: Item[];
-    public total: number;
 
     constructor(private cart: Cart) {
         this.items = cart.items;
-        this.total = cart.total;
+    }
+
+    get total() {
+        return this.cart.total;
     }
 }
