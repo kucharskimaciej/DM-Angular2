@@ -49,7 +49,7 @@ var fn = function (a: number, b: number): string {
 Warto przeczytać:
 
 * [Basic types](http://www.typescriptlang.org/Handbook#basic-types)
-* [Generics](http://www.typescriptlang.org/Handbook#generics
+* [Generics](http://www.typescriptlang.org/Handbook#generics)
 
 ## Klasy
 
