@@ -56,7 +56,7 @@ Warto przeczytać:
 Zamiast polegać wyłącznie na typach wbudowanych możemy tworzyć swoje przy pomocy klas. 
 Klasa to definicja typu, która zwykle składa się z konstruktora, deklaracji atrybutów oraz metod:
 
-```typescipt
+```typescript
 class Person {
     public name: string;
     public age: number;
