@@ -48,8 +48,8 @@ var fn = function (a: number, b: number): string {
 
 Warto przeczytać:
 
-* (Basic types)[http://www.typescriptlang.org/Handbook#basic-types]
-* (Generics)[http://www.typescriptlang.org/Handbook#generics]
+* [Basic types](http://www.typescriptlang.org/Handbook#basic-types)
+* [Generics](http://www.typescriptlang.org/Handbook#generics
 
 ## Klasy
 
@@ -91,8 +91,8 @@ class Person {
 
 Warto przeczytać:
 
-* (Classes)[http://www.typescriptlang.org/Handbook#classes]
-* (Interfaces)[http://www.typescriptlang.org/Handbook#interfaces]
+* [Classes](http://www.typescriptlang.org/Handbook#classes)
+* [Interfaces](http://www.typescriptlang.org/Handbook#interfaces)
 
 
 ## Dekorator
@@ -118,7 +118,7 @@ Skorzystaliśmy też z dekoratora `@Inject`, który pozwala na skorzystanie z De
 
 Warto przeczytać:
 
-* (Decorators)[https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript#decorators]
+* [Decorators](https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript#decorators)
 ## Warto poczytać
 
 * [Writing Angular2 in Typescript](http://victorsavkin.com/post/123555572351/writing-angular-2-in-typescript)
