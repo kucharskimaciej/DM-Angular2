@@ -79,7 +79,7 @@ person.lastName = "Kowalski"; // => błąd! 'lastName' nie zostało zadeklarowan
 
 Jeżeli, tak jak powyżej, w konstruktorze type przypisujesz przekazane argumenty do odpowiednich atrybutów, możemy skorzystać ze skróconego zapisu:
  
-```typescipt
+```typescript
 class Person {
     private secret: string;
      
