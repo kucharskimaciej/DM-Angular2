@@ -45,7 +45,7 @@ Dostępny w `usernameControl` będzie również obiekt `errors`, którego klucze
 this.usernameControl = new Control('username', Validators.compose([
     Validators.minLength(3),
     Validators.maxLength(12)
-));
+]));
 ```
 
 ## Własny walidator
